@@ -2,7 +2,9 @@
 #include <lib/types/defs.h>
 #include <lib/types/bool.h>
 #include <lib/types/int.h>
+#include <lib/io.h>
 
+extern void outb(uint16_t port, uint8_t value);
 
 uint8_t *buffer;
 bool colors_available;
@@ -81,4 +83,18 @@ vga_get_character(
     }
 
     return character;
+}
+
+void vga_set_cursor_position(uint8_t x, uint8_t y) {
+    uint16_t pos = y * VGA_VIDEO_WIDTH + x;
+ 
+    outb(0x3D4, 0x0F);
+    outb(0x3D5, (uint8_t) (pos & 0xFF));
+    outb(0x3D4, 0x0E);
+    outb(0x3D5, (uint8_t) ((pos >> 8) & 0xFF));
+}
+
+void vga_disable_cursor() {
+    outb(0x3D4, 0x0A);
+    outb(0x3D5, 0x20);
 }

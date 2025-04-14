@@ -38,5 +38,8 @@ void vga_put_character(uint8_t x, uint8_t y, char character, uint8_t color_pair)
 void vga_color_unpack_pair(uint8_t color, vga_color_t *foreground, vga_color_t *background);
 char vga_get_character(uint8_t x, uint8_t y, uint8_t *color);
 
+void vga_set_cursor_position(uint8_t x, uint8_t y);
+void vga_disable_cursor();
+
 
 #endif

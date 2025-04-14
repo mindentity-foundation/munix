@@ -64,6 +64,7 @@ tty_put_string(
     void *context,
     const char *string
 ) {
+    (void)context;
     for (size_t index = 0; index < string_length(string); index++) {
         tty_put_character(string[index]);
     }
@@ -74,6 +75,7 @@ tty_put_char_wrapper(
     void *context,
     char character
 ) {
+    (void)context;
     tty_put_character(character);
 }
 
