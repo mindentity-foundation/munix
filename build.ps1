@@ -46,9 +46,11 @@ $sfiles = @(
 )
 
 $cfiles = @(
+    "kernel\drivers\keyboard.c",
     "kernel\hardware\hardware.c",
     "kernel\hardware\vga.c",
     "kernel\interupts\gdt.c",
+    "kernel\io\io.c",
     "kernel\io\port.c",
     "kernel\io\serial.c",
     "kernel\main.c",

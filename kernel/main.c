@@ -3,6 +3,7 @@
 #include <kernel/io/port.h>
 #include <kernel/misc.h>
 #include <kernel/tty.h>
+#include <kernel/drivers/keyboard.h>
 #include <lib/io.h>
 
 
@@ -19,6 +20,9 @@ void kmain() {
 
     slog(COM, "installing gdt.\n");
     gdt_install();
+    
+    slog(COM, "initializing keyboard.\n");
+    keyboard_init();
     
     slog(COM, "initialization complete.\n");
     klog("this is ready, yay!\n");
