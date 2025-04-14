@@ -15,7 +15,5 @@ bool serial_port_init(uint16_t com_port);
 char serial_port_read(uint16_t port);
 void serial_port_write(uint16_t port, char character);
 
-void serial_port_print(uint16_t port, const char *string);
-
 
 #endif

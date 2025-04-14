@@ -4,19 +4,20 @@
 #include <lib/types/int.h>
 
 
-uint8_t *buffer;
-bool colors_available;
-
+struct {
+    uint8_t *buffer;
+    bool colors_available;
+} vga = { 0 };
 
 void
 vga_init(
     bool monochrome
 ) {
-    buffer = monochrome
+    vga.buffer = monochrome
         ? (uint8_t *)0xB0000
         : (uint8_t *)0xB8000;
 
-    colors_available = !monochrome;
+    vga.colors_available = !monochrome;
 }
 
 
@@ -35,15 +36,15 @@ vga_put_character(
     uint8_t color_pair
 ) {
     uint16_t index = 0;
-    if (colors_available) {
+    if (vga.colors_available) {
         index = (y * VGA_VIDEO_WIDTH * 2) + (x * 2);
     } else {
         index = y * VGA_VIDEO_WIDTH + x;
     }
 
-    buffer[index] = character;
-    if (colors_available) {
-        buffer[index + 1] = color_pair;
+    vga.buffer[index] = character;
+    if (vga.colors_available) {
+        vga.buffer[index + 1] = color_pair;
     }
 }
 
@@ -69,15 +70,15 @@ vga_get_character(
     uint8_t *color
 ) {
     uint16_t index = 0;
-    if (colors_available) {
+    if (vga.colors_available) {
         index = (y * VGA_VIDEO_WIDTH * 2) + (x * 2);
     } else {
         index = y * VGA_VIDEO_WIDTH + x;
     }
 
-    char character = buffer[index];
-    if (colors_available && NULL != color) {
-        *color = buffer[index + 1];
+    char character = vga.buffer[index];
+    if (vga.colors_available && NULL != color) {
+        *color = vga.buffer[index + 1];
     }
 
     return character;

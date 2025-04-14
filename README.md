@@ -1,9 +1,17 @@
-# VoiKer
+# MUNIX
 
-VoiKer (Ядро Войсона) - Це невелике ядро, написане на С та GNU Ассемблері. Я пишу його заради інтересу в цій темі. Раніше я питалося писати щось подібне, але наразі, це більш удачніша спроба з усіх спроб які у мене були.
+MUNIX (Mindentity Unix) - Is a small OS microkernel, that follows UNIX philosophy.
 
 
-## Що вже є готове?
+## Plans
+
+Our development team has many plans on this kernel. The main one's are:
+- Module and Driver support.
+- FAT16/ext2 Filesystem support.
+- ELF Executable format support.
+- Own Hand-written and lovely made Coreutils.
+- User-space Services.
+- 
 
 Не так багато, як хотілося б. Ось що вже готово:
 - Невеликий VGA драйвер.

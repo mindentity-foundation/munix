@@ -48,13 +48,3 @@ serial_port_write(
     outb(port, character);
 }
 
-
-void
-serial_port_print(
-    uint16_t port,
-    const char *string
-) {
-    for (size_t index = 0; index < string_length(string); index++) {
-        serial_port_write(port, string[index]);
-    }
-}
