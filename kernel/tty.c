@@ -1,7 +1,6 @@
 #include <kernel/hardware/hardware.h>
 #include <kernel/hardware/vga.h>
 #include <kernel/tty.h>
-#include <lib/types/int.h>
 
 typedef struct {
     vga_color_t foreground;
